@@ -1,0 +1,9 @@
+{
+    "go.testFlags": [
+        "-v",
+        "-coverpkg=github.com/goledgerdev/cc-mensalist/chaincode/..."
+    ],
+    "gopls": {
+        "experimentalWorkspaceModule": true
+    }
+}
