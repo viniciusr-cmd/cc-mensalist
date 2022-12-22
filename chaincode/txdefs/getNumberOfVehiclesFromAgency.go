@@ -9,41 +9,41 @@ import (
 	tx "github.com/goledgerdev/cc-tools/transactions"
 )
 
-// Return the number of books of a library
+// Return the number of Vehicles of a agency
 // GET method
-var GetNumberOfBooksFromLibrary = tx.Transaction{
-	Tag:         "getNumberOfBooksFromLibrary",
-	Label:       "Get Number Of Books From Library",
-	Description: "Return the number of books of a library",
+var GetNumberOfVehiclesFromAgency = tx.Transaction{
+	Tag:         "getNumberOfVehiclesFromAgency",
+	Label:       "Get Number Of Vehicles from Agency",
+	Description: "Return the number of Vehicles of a agency",
 	Method:      "GET",
 	Callers:     []string{"$org2MSP", "$orgMSP"}, // Only org2 can call this transactions
 
 	Args: []tx.Argument{
 		{
-			Tag:         "library",
-			Label:       "Library",
-			Description: "Library",
-			DataType:    "->library",
+			Tag:         "agency",
+			Label:       "Agency",
+			Description: "Agency",
+			DataType:    "->agency",
 			Required:    true,
 		},
 	},
 	Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
-		libraryKey, _ := req["library"].(assets.Key)
+		agencyKey, _ := req["agency"].(assets.Key)
 
-		// Returns Library from channel
-		libraryMap, err := libraryKey.GetMap(stub)
+		// Returns Agency from channel
+		agencyMap, err := agencyKey.GetMap(stub)
 		if err != nil {
 			return nil, errors.WrapError(err, "failed to get asset from the ledger")
 		}
 
-		numberOfBooks := 0
-		books, ok := libraryMap["books"].([]interface{})
+		numberOfVehicles := 0
+		vehicles, ok := agencyMap["vehicles"].([]interface{})
 		if ok {
-			numberOfBooks = len(books)
+			numberOfVehicles = len(vehicles)
 		}
 
 		returnMap := make(map[string]interface{})
-		returnMap["numberOfBooks"] = numberOfBooks
+		returnMap["numberOfVehicles"] = numberOfVehicles
 
 		// Marshal asset back to JSON format
 		returnJSON, nerr := json.Marshal(returnMap)

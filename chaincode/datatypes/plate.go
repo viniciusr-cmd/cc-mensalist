@@ -21,8 +21,8 @@ var plate = assets.DataType{
 			return "", nil, errors.NewCCError("property must be a string", 400)
 		}
 
-		if len(plate) != 6 {
-			return "", nil, errors.NewCCError("plate must have 6 characters", 400)
+		if len(plate) != 7 {
+			return "", nil, errors.NewCCError("vehicle plate must have 7 characters", 400)
 		}
 
 		return plate, plate, nil

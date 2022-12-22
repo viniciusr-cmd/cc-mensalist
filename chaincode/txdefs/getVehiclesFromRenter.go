@@ -11,6 +11,7 @@ import (
 
 // Return the all books from an specific author
 // GET method
+// TODO: Get vehicles by renter
 var GetBooksByAuthor = tx.Transaction{
 	Tag:         "getBooksByAuthor",
 	Label:       "Get Books by the Author Name",
@@ -20,9 +21,9 @@ var GetBooksByAuthor = tx.Transaction{
 
 	Args: []tx.Argument{
 		{
-			Tag:         "authorName",
-			Label:       "Author Name",
-			Description: "Author Name",
+			Tag:         "renterName",
+			Label:       "Renter name",
+			Description: "Renter name",
 			DataType:    "string",
 			Required:    true,
 		},
@@ -34,7 +35,7 @@ var GetBooksByAuthor = tx.Transaction{
 		},
 	},
 	Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
-		authorName, _ := req["authorName"].(string)
+		authorName, _ := req["renterName"].(string)
 		limit, hasLimit := req["limit"].(float64)
 
 		if hasLimit && limit <= 0 {
@@ -44,7 +45,7 @@ var GetBooksByAuthor = tx.Transaction{
 		// Prepare couchdb query
 		query := map[string]interface{}{
 			"selector": map[string]interface{}{
-				"@assetType": "book",
+				"@assetType": "vehicle",
 				"author":     authorName,
 			},
 		}

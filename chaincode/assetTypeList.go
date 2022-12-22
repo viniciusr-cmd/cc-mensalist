@@ -6,8 +6,8 @@ import (
 )
 
 var assetTypeList = []assets.AssetType{
-	assettypes.Mensalist,
 	assettypes.Vehicle,
 	assettypes.Agency,
-	// assettypes.Secret,
+	assettypes.Renter,
+	assettypes.Rent,
 }

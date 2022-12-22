@@ -7,11 +7,12 @@ import (
 	"github.com/goledgerdev/cc-tools/assets"
 	"github.com/goledgerdev/cc-tools/errors"
 )
+
 type VehicleType int
 
 const (
 	VehicleTypeCar VehicleType = iota
-	VehicleTypeMotor 
+	VehicleTypeMotor
 )
 
 func (status VehicleType) CheckType() errors.ICCError {
@@ -31,16 +32,16 @@ var vehicleType = assets.DataType{
 	Parse: func(data interface{}) (string, interface{}, errors.ICCError) {
 		var dataValue int
 
-		switch v := data.(type) {
+		switch vehicle := data.(type) {
 		case VehicleType:
-			dataValue = (int)(v)
+			dataValue = (int)(vehicle)
 		case int:
-			dataValue = v
+			dataValue = vehicle
 		case float64:
-			dataValue = (int)(v)
+			dataValue = (int)(vehicle)
 		case string:
 			var err error
-			dataValue, err = strconv.Atoi(v)
+			dataValue, err = strconv.Atoi(vehicle)
 			if err != nil {
 				return "", nil, errors.WrapErrorWithStatus(err, "asset property must be an integer, is %t", 400)
 			}
@@ -50,7 +51,6 @@ var vehicleType = assets.DataType{
 
 		retVal := (VehicleType)(dataValue)
 		err := retVal.CheckType()
-
 		return fmt.Sprint(retVal), retVal, err
 	},
 }

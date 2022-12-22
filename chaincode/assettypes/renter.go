@@ -6,10 +6,10 @@ import (
 	"github.com/goledgerdev/cc-tools/assets"
 )
 
-var Mensalist = assets.AssetType{
-	Tag:         "mensalist",
-	Label:       "Mensalist",
-	Description: "Personal data of mensalist",
+var Renter = assets.AssetType{
+	Tag:         "renter",
+	Label:       "Renter",
+	Description: "Personal data of the renter",
 
 	Props: []assets.AssetProp{
 		{
@@ -23,16 +23,9 @@ var Mensalist = assets.AssetType{
 		},
 		{
 			// Mandatory property
-			Required: false,
-			Tag:      "CNPJ",
-			Label:    "CNPJ (Brazilian National Registry of Legal Entities)",
-			DataType: "cnpj",
-		},
-		{
-			// Mandatory property
 			Required: true,
-			Tag:      "name",
-			Label:    "Mensalist name",
+			Tag:      "renterName",
+			Label:    "Renter name",
 			DataType: "string",
 			// Validate funcion
 			Validate: func(name interface{}) error {
@@ -42,18 +35,6 @@ var Mensalist = assets.AssetType{
 				}
 				return nil
 			},
-		},
-		{
-			Required: true,
-			Tag:      "Registry date",
-			Label:    "Mensalist registry date",
-			DataType: "datetime",
-		},
-		{
-			Required: true,
-			Tag:      "Vehicles",
-			Label:    "Vehicles of mensalist",
-			DataType: "[]->vehicle",
 		},
 	},
 }

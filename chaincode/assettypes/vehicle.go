@@ -27,23 +27,24 @@ var Vehicle = assets.AssetType{
 			DataType: "vehicleType",
 		},
 		{
-			//Mandatory property
-			Required: true,
 			Tag:      "model",
-			Label:    "Vehicle model",
+			Label:    "Vehicle model name",
 			DataType: "string",
 		},
 		{
-			Tag:      "mensalist",
-			Label:    "Current mensalist",
-			DataType: "->mensalist",
+			Tag:      "rentPrice",
+			Label:    "Rent Price (BRL)",
+			DataType: "number",
 		},
 		{
-			//Mandatory property
-			Required: true,
-			Tag:      "rentPrice",
-			Label:    "Rent price",
-			DataType: "float",
+			Tag:      "renter",
+			Label:    "Renter",
+			DataType: "->renter",
+		},
+		{
+			Tag:      "rent",
+			Label:    "Rent ID",
+			DataType: "->rent",
 		},
 		{
 			// Property with default value

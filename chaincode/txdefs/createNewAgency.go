@@ -9,12 +9,12 @@ import (
 	tx "github.com/goledgerdev/cc-tools/transactions"
 )
 
-// Create a new Library on channel
+// Create a new Agency on channel
 // POST Method
-var CreateNewLibrary = tx.Transaction{
-	Tag:         "createNewLibrary",
-	Label:       "Create New Library",
-	Description: "Create a New Library",
+var CreateNewAgency = tx.Transaction{
+	Tag:         "createNewAgency",
+	Label:       "Create New Agency",
+	Description: "Create a New Agency",
 	Method:      "POST",
 	Callers:     []string{"$org3MSP", "$orgMSP"}, // Only org3 can call this transaction
 
@@ -22,7 +22,7 @@ var CreateNewLibrary = tx.Transaction{
 		{
 			Tag:         "name",
 			Label:       "Name",
-			Description: "Name of the library",
+			Description: "Name of the Agency",
 			DataType:    "string",
 			Required:    true,
 		},
@@ -30,27 +30,27 @@ var CreateNewLibrary = tx.Transaction{
 	Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
 		name, _ := req["name"].(string)
 
-		libraryMap := make(map[string]interface{})
-		libraryMap["@assetType"] = "library"
-		libraryMap["name"] = name
+		agencyMap := make(map[string]interface{})
+		agencyMap["@assetType"] = "agency"
+		agencyMap["name"] = name
 
-		libraryAsset, err := assets.NewAsset(libraryMap)
+		agencyAsset, err := assets.NewAsset(agencyMap)
 		if err != nil {
 			return nil, errors.WrapError(err, "Failed to create a new asset")
 		}
 
-		// Save the new library on channel
-		_, err = libraryAsset.PutNew(stub)
+		// Save the new agency on channel
+		_, err = agencyAsset.PutNew(stub)
 		if err != nil {
 			return nil, errors.WrapError(err, "Error saving asset on blockchain")
 		}
 
 		// Marshal asset back to JSON format
-		libraryJSON, nerr := json.Marshal(libraryAsset)
+		agencyJSON, nerr := json.Marshal(agencyAsset)
 		if nerr != nil {
 			return nil, errors.WrapError(nil, "failed to encode asset to JSON format")
 		}
 
-		return libraryJSON, nil
+		return agencyJSON, nil
 	},
 }

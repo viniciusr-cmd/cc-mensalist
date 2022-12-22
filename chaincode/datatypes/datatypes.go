@@ -6,8 +6,9 @@ import (
 
 // CustomDataTypes contain the user-defined primary data types
 var CustomDataTypes = map[string]assets.DataType{
-	"cpf":      cpf,
-	"cnpj":	 	cnpj,
+	"cpf":         cpf,
+	"cnpj":        cnpj,
 	"vehicleType": vehicleType,
-	"plate":    plate,
+	"plate":       plate,
+	"rentStatus":  rentStatus,
 }
