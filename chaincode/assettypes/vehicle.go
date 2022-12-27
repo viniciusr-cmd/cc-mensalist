@@ -27,14 +27,10 @@ var Vehicle = assets.AssetType{
 			DataType: "vehicleType",
 		},
 		{
+			Required: true,
 			Tag:      "model",
 			Label:    "Vehicle model name",
 			DataType: "string",
-		},
-		{
-			Tag:      "rentPrice",
-			Label:    "Rent Price (BRL)",
-			DataType: "number",
 		},
 		{
 			Tag:      "renter",

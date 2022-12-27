@@ -17,7 +17,7 @@ var Agency = assets.AssetType{
 			// Primary Key
 			Required: true,
 			IsKey:    true,
-			Tag:      "CNPJ",
+			Tag:      "cnpj",
 			Label:    "CNPJ",
 			DataType: "cnpj",
 			Writers:  []string{`org3MSP`, "orgMSP"}, // This means only org3 can create the asset (others can edit)

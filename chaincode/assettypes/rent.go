@@ -21,6 +21,7 @@ var Rent = assets.AssetType{
 			Writers:  []string{`org3MSP`},
 		},
 		{
+			// Property with default value reference another datatype
 			Tag:          "status",
 			Label:        "Rent status",
 			DefaultValue: datatypes.NotRented,
@@ -43,7 +44,7 @@ var Rent = assets.AssetType{
 		},
 		{
 			Tag:      "endDate",
-			Label:    "End date rent",
+			Label:    "End date",
 			DataType: "datetime",
 		},
 	},

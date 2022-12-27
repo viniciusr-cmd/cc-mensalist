@@ -26,13 +26,41 @@ var CreateNewAgency = tx.Transaction{
 			DataType:    "string",
 			Required:    true,
 		},
+		{
+			Tag:         "cnpj",
+			Label:       "CNPJ",
+			Description: "Agency's CNPJ",
+			DataType:    "cnpj",
+			Required:    true,
+		},
+		{
+			Tag:         "city",
+			Label:       "city",
+			Description: "Agency's City",
+			DataType:    "string",
+			Required:    true,
+		},
+		{
+			Tag:         "vehicles",
+			Label:       "Vehicles For Rent",
+			Description: "vehicles",
+			DataType:    "[]->vehicle",
+			Required:    false,
+		},
 	},
 	Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
 		name, _ := req["name"].(string)
+		cnpj, _ := req["cnpj"].(string)
+		city, _ := req["city"].(string)
+		vehicles, _ := req["vehicle"].([]interface{})
 
 		agencyMap := make(map[string]interface{})
+
 		agencyMap["@assetType"] = "agency"
+		agencyMap["cnpj"] = cnpj
 		agencyMap["name"] = name
+		agencyMap["city"] = city
+		agencyMap["vehicles"] = vehicles
 
 		agencyAsset, err := assets.NewAsset(agencyMap)
 		if err != nil {
