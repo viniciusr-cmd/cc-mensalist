@@ -52,7 +52,7 @@ var CreateNewAgency = tx.Transaction{
 		name, _ := req["name"].(string)
 		cnpj, _ := req["cnpj"].(string)
 		city, _ := req["city"].(string)
-		vehicles, _ := req["vehicle"].([]interface{})
+		vehicles, _ := req["vehicles"].([]interface{})
 
 		agencyMap := make(map[string]interface{})
 
