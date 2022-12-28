@@ -16,5 +16,4 @@ var txList = []tx.Transaction{
 	txdefs.GetNumberOfVehiclesFromAgency,
 	txdefs.GetLastRenters,
 	txdefs.CreateNewRenter,
-	// txdefs.GetBooksByAuthor, TODO: GET VEHICLES BY RENTER
 }

@@ -38,7 +38,7 @@ var CreateNewAgency = tx.Transaction{
 			Label:       "city",
 			Description: "Agency's City",
 			DataType:    "string",
-			Required:    true,
+			Required:    false,
 		},
 		{
 			Tag:         "vehicleList",
