@@ -2,7 +2,6 @@ package assettypes
 
 import (
 	"github.com/goledgerdev/cc-mensalist/chaincode/datatypes"
-
 	"github.com/goledgerdev/cc-tools/assets"
 )
 
@@ -17,8 +16,8 @@ var Rent = assets.AssetType{
 			IsKey:    true,
 			Tag:      "id",
 			Label:    "Data ID",
-			DataType: "string",
-			Writers:  []string{`org3MSP`},
+			DataType: "number",
+			Writers:  []string{`org2MSP`},
 		},
 		{
 			// Property with default value reference another datatype

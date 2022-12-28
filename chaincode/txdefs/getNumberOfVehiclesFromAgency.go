@@ -37,7 +37,7 @@ var GetNumberOfVehiclesFromAgency = tx.Transaction{
 		}
 
 		numberOfVehicles := 0
-		vehicles, ok := agencyMap["vehicles"].([]interface{})
+		vehicles, ok := agencyMap["vehicle"].([]interface{})
 		if ok {
 			numberOfVehicles = len(vehicles)
 		}

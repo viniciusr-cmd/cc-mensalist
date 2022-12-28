@@ -44,8 +44,8 @@ var Agency = assets.AssetType{
 		},
 		{
 			// Asset reference list
-			Tag:      "vehicles",
-			Label:    "Vehicles for Rent",
+			Tag:      "vehicleList",
+			Label:    "Vehicles List",
 			DataType: "[]->vehicle",
 		},
 	},

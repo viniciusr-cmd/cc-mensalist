@@ -11,7 +11,7 @@ import (
 
 // POST Method
 var CreateNewRenter = tx.Transaction{
-	Tag:         "criarLote",
+	Tag:         "createNewRenter",
 	Label:       "Create new renter",
 	Description: "Create new renter",
 	Method:      "POST",
@@ -42,21 +42,21 @@ var CreateNewRenter = tx.Transaction{
 		renterMap["id"] = cpf
 		renterMap["renterName"] = renterName
 
-		vehicleAsset, err := assets.NewAsset(renterMap)
+		renterAsset, err := assets.NewAsset(renterMap)
 		if err != nil {
 			return nil, errors.WrapError(err, "Failed to create a new renter asset")
 		}
 
-		_, err = vehicleAsset.PutNew(stub)
+		_, err = renterAsset.PutNew(stub)
 		if err != nil {
 			return nil, errors.WrapError(err, "Error saving asset on blockchain")
 		}
 
-		vehicleJSON, nerr := json.Marshal(vehicleAsset)
+		renterJSON, nerr := json.Marshal(renterAsset)
 		if nerr != nil {
 			return nil, errors.WrapError(nil, "failed to encode asset to JSON format")
 		}
 
-		return vehicleJSON, nil
+		return renterJSON, nil
 	},
 }

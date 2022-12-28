@@ -41,7 +41,7 @@ var CreateNewAgency = tx.Transaction{
 			Required:    true,
 		},
 		{
-			Tag:         "vehicles",
+			Tag:         "vehicleList",
 			Label:       "Vehicles For Rent",
 			Description: "vehicles",
 			DataType:    "[]->vehicle",
@@ -52,7 +52,7 @@ var CreateNewAgency = tx.Transaction{
 		name, _ := req["name"].(string)
 		cnpj, _ := req["cnpj"].(string)
 		city, _ := req["city"].(string)
-		vehicles, _ := req["vehicles"].([]interface{})
+		vehicles, _ := req["vehicleList"].([]interface{})
 
 		agencyMap := make(map[string]interface{})
 
@@ -60,7 +60,9 @@ var CreateNewAgency = tx.Transaction{
 		agencyMap["cnpj"] = cnpj
 		agencyMap["name"] = name
 		agencyMap["city"] = city
-		agencyMap["vehicles"] = vehicles
+		if len(vehicles) > 0 {
+			agencyMap["vehicleList"] = vehicles
+		}
 
 		agencyAsset, err := assets.NewAsset(agencyMap)
 		if err != nil {
