@@ -12,8 +12,8 @@ import (
 // POST Method
 var CreateNewRenter = tx.Transaction{
 	Tag:         "createNewRenter",
-	Label:       "Create new renter",
-	Description: "Create new renter",
+	Label:       "Create New Renter",
+	Description: "Create New Renter",
 	Method:      "POST",
 
 	Args: []tx.Argument{

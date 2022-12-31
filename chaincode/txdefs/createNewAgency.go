@@ -38,7 +38,7 @@ var CreateNewAgency = tx.Transaction{
 			Label:       "city",
 			Description: "Agency's City",
 			DataType:    "string",
-			Required:    false,
+			Required:    true,
 		},
 		{
 			Tag:         "vehicleList",
@@ -60,6 +60,7 @@ var CreateNewAgency = tx.Transaction{
 		agencyMap["cnpj"] = cnpj
 		agencyMap["name"] = name
 		agencyMap["city"] = city
+
 		if len(vehicles) > 0 {
 			agencyMap["vehicleList"] = vehicles
 		}

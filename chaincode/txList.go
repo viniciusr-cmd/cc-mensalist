@@ -13,7 +13,9 @@ var txList = []tx.Transaction{
 	txdefs.RentVehicle,
 	txdefs.EndRent,
 	txdefs.CreateNewAgency,
+	txdefs.CreateNewRenter,
+	txdefs.CreateNewRent,
+	txdefs.CreateNewVehicle,
 	txdefs.GetNumberOfVehiclesFromAgency,
 	txdefs.GetLastRenters,
-	txdefs.CreateNewRenter,
 }
